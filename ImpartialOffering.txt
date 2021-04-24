@@ -1,0 +1,34 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+		
+		int t = sc.nextInt();
+		int mycase = 1;
+		while (t -- > 0) {
+			int n = sc.nextInt();
+			
+			Map<Integer, Integer> map = new TreeMap<>();
+			
+			for(int i = 0; i < n; i++) {
+				int val = sc.nextInt();
+				map.put(val, map.getOrDefault(val, 0) + 1);
+			}
+			
+			int count = 1, res = 0;
+			for(int key : map.keySet()) {
+				res += (count++) * map.get(key);
+			}
+			
+			System.out.println("Case #" +mycase + ": " + res);
+			mycase++;
+		}
+		sc.close();
+	}
+
+}

@@ -1,0 +1,50 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+		
+		int n = sc.nextInt();
+		
+		for (int i = 1; i <= n; i++) {
+			
+			int l = sc.nextInt();
+			int a[] = new int[l];
+			StringBuilder sb = new StringBuilder("A");
+			
+			for(int j = 0; j< l ; j++)
+				a[j] = sc.nextInt();
+			char prev = 'A';
+			for(int j = 0; j< l; j++) {
+				if (j % 2 != 1) {
+					while (a[j] > 1) {
+						prev ++;
+						sb.append(prev);						
+						a[j]--;
+					}
+					if (j < l-1)
+						prev = (char) Math.max(prev + 1,'A' + a[j+1]);
+					else
+						prev++;
+					sb.append(prev);
+				} else {
+					while (a[j] > 0) {
+						prev = (char) ('A' + a[j] - 1) ;
+						sb.append(prev);
+						a[j]--;
+					}
+				}
+			}
+			
+			System.out.println("Case #" +i + ": " + sb.toString());
+		}
+
+		sc.close();
+	
+	}
+
+}
